@@ -101,45 +101,82 @@
     </div>
   </section>
 
-  <!-- ===== TESTS ===== -->
+  <!-- ===== TESTS / BATERÍA ===== -->
   <section class="seccion" id="tests">
-    <h2 class="sec-title" data-i18n="tests.title">Pruébalo ahora: los tests</h2>
-    <p class="sec-sub" data-i18n="tests.sub">Versión corta y jugable de los tests que usarán los perfiles. Resultado al momento.</p>
-    <div class="cards dos">
+    <h2 class="sec-title" data-i18n="bat.title">La batería completa SmartTwin</h2>
+    <p class="sec-sub" data-i18n="bat.sub">Cinco instrumentos, un solo perfil. Al terminar, todo se guarda cifrado con tu llave personal.</p>
+    <p class="sec-sub" id="bat-langnote" hidden></p>
+    <div class="cards bateria">
       <article class="card test-card">
         <p class="card-emoji">🧠</p>
-        <h3 data-i18n="tests.iqh">Test de IQ — versión corta</h3>
-        <p data-i18n="tests.iqp">6 retos de patrones, secuencias y lógica. ¿Qué tan aguda está tu mente hoy?</p>
-        <button class="btn" type="button" id="start-iq" data-i18n="tests.start">Empezar test</button>
+        <h3 data-i18n="bat.cogH">Cognitivo-32</h3>
+        <p data-i18n="bat.cogP">Matrices, series, razonamiento verbal y rotación espacial. Puntuación con percentil e IQ estimado.</p>
+        <p class="meta" data-i18n="bat.cogM">32 reactivos · ~13 min</p>
+        <button class="btn" type="button" data-start="cog" data-i18n="bat.start">Comenzar</button>
+        <p class="bat-status" id="st-cog"></p>
+      </article>
+      <article class="card test-card">
+        <p class="card-emoji">🎭</p>
+        <h3 data-i18n="bat.eqSH">EQ Situacional-16</h3>
+        <p data-i18n="bat.eqSP">16 escenarios reales de citas y pareja, puntuados por rama emocional: percibir, usar, comprender, manejar.</p>
+        <p class="meta" data-i18n="bat.eqSM">16 escenarios · ~7 min</p>
+        <button class="btn" type="button" data-start="eqsit" data-i18n="bat.start">Comenzar</button>
+        <p class="bat-status" id="st-eqsit"></p>
       </article>
       <article class="card test-card">
         <p class="card-emoji">💗</p>
-        <h3 data-i18n="tests.eqh">Test de inteligencia emocional</h3>
-        <p data-i18n="tests.eqp">6 situaciones reales de citas y pareja. ¿Cómo responde tu corazón?</p>
-        <button class="btn" type="button" id="start-eq" data-i18n="tests.start2">Empezar test</button>
+        <h3 data-i18n="bat.eqAH">EQ Autorreporte-24</h3>
+        <p data-i18n="bat.eqAP">Cómo te percibes emocionalmente, en las mismas 4 ramas. Perfil de 0 a 100 por rama.</p>
+        <p class="meta" data-i18n="bat.eqAM">24 afirmaciones · ~4 min</p>
+        <button class="btn" type="button" data-start="eqself" data-i18n="bat.start">Comenzar</button>
+        <p class="bat-status" id="st-eqself"></p>
+      </article>
+      <article class="card test-card">
+        <p class="card-emoji">🪞</p>
+        <h3 data-i18n="bat.ipipH">Personalidad — Big Five (IPIP-50)</h3>
+        <p data-i18n="bat.ipipP">El inventario científico de dominio público: Extraversión, Amabilidad, Responsabilidad, Estabilidad emocional e Intelecto.</p>
+        <p class="meta" data-i18n="bat.ipipM">50 afirmaciones · ~7 min</p>
+        <button class="btn" type="button" data-start="ipip" data-i18n="bat.start">Comenzar</button>
+        <p class="bat-status" id="st-ipip"></p>
+      </article>
+      <article class="card test-card">
+        <p class="card-emoji">🔥</p>
+        <h3 data-i18n="bat.connH">Conexión-36</h3>
+        <p data-i18n="bat.connP">36 preguntas originales en 3 sets de intimidad creciente, con la arquitectura del procedimiento de cercanía de Aron. Respóndelas aquí o guárdalas para hacerlas con tu match.</p>
+        <p class="meta" data-i18n="bat.connM">36 preguntas · a tu ritmo</p>
+        <button class="btn" type="button" data-start="conn" data-i18n="bat.start">Comenzar</button>
+        <p class="bat-status" id="st-conn"></p>
       </article>
     </div>
 
-    <div class="quiz panel" id="quiz" hidden>
+    <div class="quiz panel" id="bat-panel" hidden>
       <div class="quiz-head">
-        <span id="quiz-title"></span>
-        <span id="quiz-progress"></span>
+        <span id="bat-title"></span>
+        <span id="bat-progress"></span>
       </div>
-      <div class="quiz-bar"><div id="quiz-fill"></div></div>
-      <p class="quiz-q" id="quiz-q"></p>
-      <div class="quiz-opts" id="quiz-opts"></div>
+      <div class="quiz-bar"><div id="bat-fill"></div></div>
+      <p class="quiz-set" id="bat-set"></p>
+      <p class="quiz-q" id="bat-q"></p>
+      <div class="quiz-opts" id="bat-opts"></div>
+      <div id="bat-textwrap" hidden>
+        <textarea id="bat-text" rows="4"></textarea>
+        <div class="bat-row">
+          <button class="btn" type="button" id="bat-save" data-i18n="bat.save">Guardar y seguir</button>
+          <button class="btn ghost" type="button" id="bat-skip" data-i18n="bat.skip">Saltar</button>
+        </div>
+      </div>
     </div>
 
-    <div class="quiz panel result" id="quiz-result" hidden>
-      <p class="result-emoji" id="result-emoji">✨</p>
-      <h3 id="result-title"></h3>
-      <p class="result-score" id="result-score"></p>
-      <p id="result-text"></p>
-      <a class="btn big" href="#espera" data-i18n="tests.resultcta">Quiero mi perfil cuando abra</a>
-      <button class="btn ghost" type="button" id="quiz-again" data-i18n="tests.again">Repetir test</button>
+    <div class="quiz panel result" id="bat-result" hidden>
+      <p class="result-emoji" id="bat-remoji">✨</p>
+      <h3 id="bat-rtitle"></h3>
+      <p class="result-score" id="bat-rscore"></p>
+      <p id="bat-rtext"></p>
+      <a class="btn big" href="#boveda" data-i18n="bat.tobvault">Guardar en mi bóveda cifrada</a>
+      <button class="btn ghost" type="button" id="bat-again" data-i18n="bat.again">Cerrar</button>
     </div>
 
-    <p class="disclaimer" data-i18n="tests.disclaimer">Aviso: estos tests son orientativos, de autoconocimiento y diversión. No son un diagnóstico clínico ni una medición certificada de IQ; en la plataforma completa alimentan la compatibilidad junto con tu modo, tus intereses y tus actividades.</p>
+    <p class="disclaimer" data-i18n="bat.disclaimer">Aviso honesto: son instrumentos largos de nivel profesional en longitud y estructura, con puntuación real. El IQ mostrado es una estimación interna (percentil preliminar), no un diagnóstico ni una medición clínica certificada; lo mismo aplica a los perfiles emocionales. Personalidad: ítems IPIP de dominio público (ipip.ori.org). El resto de reactivos son originales de SmartTwin.</p>
   </section>
 
   <!-- ===== SEGURIDAD ===== -->
@@ -173,6 +210,45 @@
     </div>
   </section>
 
+  <!-- ===== BÓVEDA ===== -->
+  <section class="seccion" id="boveda">
+    <h2 class="sec-title" data-i18n="vault.title">Tu bóveda cifrada 🔐</h2>
+    <div class="panel">
+      <p data-i18n="vault.p1">Al generar tu llave, todos tus resultados y respuestas se empaquetan en un archivo cifrado con AES-256 y quedan correlacionados con tu llave personal: un solo perfil, imposible de leer sin tu llave. Guárdala bien: sin ella, ni SmartTwin puede abrir tu bóveda.</p>
+      <div id="vault-key" class="keybox" hidden>
+        <p>🔑 <strong id="vault-keyid"></strong></p>
+        <p class="secret" id="vault-secret-show"></p>
+        <p class="warn" data-i18n="vault.warn">Copia tu llave ahora: se muestra una sola vez.</p>
+      </div>
+      <div class="bat-row center">
+        <button class="btn big" type="button" id="vault-gen" data-i18n="vault.gen">Generar mi llave y descargar mi bóveda</button>
+      </div>
+      <p class="bat-msg" id="vault-msg"></p>
+      <hr class="sep">
+      <p data-i18n="vault.p2">¿Ya tienes una bóveda? Ábrela aquí para recuperar tu perfil en este dispositivo:</p>
+      <div class="bat-row">
+        <input type="file" id="vault-file" accept=".json,application/json">
+        <input type="password" id="vault-secret" data-i18n-ph="vault.secretPh" placeholder="Tu llave secreta">
+        <button class="btn ghost" type="button" id="vault-import" data-i18n="vault.import">Abrir bóveda</button>
+      </div>
+      <p class="bat-msg" id="vault-msg2"></p>
+    </div>
+  </section>
+
+  <!-- ===== CONECTA TU IA ===== -->
+  <section class="seccion" id="ia">
+    <h2 class="sec-title" data-i18n="ia.title">Conecta tu IA 🤖</h2>
+    <div class="panel">
+      <p data-i18n="ia.p1">Tu perfil puede analizarse con la IA que tú uses (Muse, ChatGPT u otro modelo). Descarga tu «perfil para IA» (se genera descifrando localmente, solo en tu sesión) y pégale el prompt oficial junto con el archivo — y si tienes el perfil de otra persona, súbelos juntos: su IA les dirá qué tan compatibles son, dónde brillan y dónde pueden chocar.</p>
+      <textarea id="ia-prompt" rows="9" readonly></textarea>
+      <div class="bat-row">
+        <button class="btn" type="button" id="ia-copy" data-i18n="ia.copy">Copiar el prompt</button>
+        <button class="btn ghost" type="button" id="ia-download" data-i18n="ia.dl">Descargar mi perfil para IA</button>
+      </div>
+      <p class="bat-msg" id="ia-msg"></p>
+    </div>
+  </section>
+
   <!-- ===== LISTA DE ESPERA ===== -->
   <section class="seccion" id="espera">
     <h2 class="sec-title" data-i18n="wait.title">Lista de espera</h2>
@@ -193,5 +269,8 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="tests-data.js"></script>
+<script src="bateria.js"></script>
+<script src="vault.js"></script>
 </body>
 </html>

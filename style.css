@@ -82,3 +82,22 @@ a{color:var(--turq)}
   .menu a{font-size:.84rem}
   .hero{padding-top:3rem}
 }
+
+/* ===== BATERÍA / BÓVEDA / IA ===== */
+.cards.bateria{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.card .meta{color:var(--turq);font-size:.8rem;font-weight:600;margin:.4rem 0 .2rem}
+.bat-status{margin-top:.6rem;font-size:.85rem;font-weight:600;color:var(--turq);min-height:1.1em}
+.quiz-set{color:var(--rosa);font-weight:700;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.3rem}
+#bat-textwrap textarea,#ia-prompt{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;
+  color:var(--txt);padding:.8rem;font-family:'Inter',sans-serif;font-size:.95rem;resize:vertical}
+.bat-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.9rem;align-items:center}
+.bat-row.center{justify-content:center}
+.bat-msg{margin-top:.8rem;font-size:.9rem;color:var(--turq)}
+.keybox{border:1.5px dashed var(--rosa);border-radius:12px;padding:1rem;margin:1rem 0;text-align:center;background:rgba(255,93,162,.06)}
+.keybox .secret{font-family:'Sora',monospace;font-size:1.25rem;letter-spacing:.12em;color:var(--txt);margin:.3rem 0}
+.keybox .warn{color:var(--rosa);font-size:.85rem}
+.sep{border:0;border-top:1px solid var(--line);margin:1.4rem 0}
+.panel input[type="file"],.panel input[type="password"]{background:var(--card);border:1px solid var(--line);color:var(--txt);
+  border-radius:10px;padding:.55rem .7rem;font-size:.9rem}
+#ia-prompt{margin-top:1rem}
+.likert-note{color:var(--dim);font-size:.85rem;margin-bottom:.6rem}

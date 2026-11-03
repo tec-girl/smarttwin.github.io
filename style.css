@@ -101,3 +101,20 @@ a{color:var(--turq)}
   border-radius:10px;padding:.55rem .7rem;font-size:.9rem}
 #ia-prompt{margin-top:1rem}
 .likert-note{color:var(--dim);font-size:.85rem;margin-bottom:.6rem}
+
+/* ===== Fase 2: app / matches / chat ===== */
+#app input[type="email"], #app input[type="password"], #app input[type="text"], #app select{
+  flex:1 1 180px; background:#0a0f22; color:var(--ink); border:1px solid #2a3355;
+  border-radius:10px; padding:.65rem .8rem; font:inherit;
+}
+.match-card .score{ font-size:1.6rem; font-weight:800; color:var(--teal); }
+.match-card .meta{ color:var(--muted); font-size:.9rem; }
+.pill{ display:inline-block; padding:.1rem .55rem; border-radius:999px; border:1px solid var(--pink);
+  color:var(--pink); font-size:.75rem; margin-left:.4rem; vertical-align:middle; }
+.conv{ display:flex; justify-content:space-between; align-items:center; gap:.6rem;
+  border:1px solid #2a3355; border-radius:12px; padding:.6rem .8rem; margin:.45rem 0; flex-wrap:wrap; }
+.chatlog{ border:1px solid #2a3355; border-radius:12px; background:#0a0f22; padding:.7rem;
+  height:280px; overflow-y:auto; display:flex; flex-direction:column; gap:.45rem; margin:.6rem 0; }
+.msg{ max-width:78%; padding:.5rem .75rem; border-radius:14px; line-height:1.35; }
+.msg.me{ align-self:flex-end; background:#173a4a; border:1px solid var(--teal); }
+.msg.them{ align-self:flex-start; background:#241433; border:1px solid var(--violet); }

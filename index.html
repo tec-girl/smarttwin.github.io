@@ -249,6 +249,91 @@
     </div>
   </section>
 
+  <!-- ============ APP FASE 2 (Supabase) ============ -->
+  <section id="app">
+    <h2>📱 SmartTwin App — cuentas, Top 10 y chat</h2>
+    <p class="muted">Crea tu cuenta, publica tu vector de puntajes (solo puntajes: tus respuestas íntimas se quedan en tu bóveda), calcula tu Top 10 contra todos los perfiles registrados, descarta y vuelve a correr el matcher, y chatea dentro de la app con tus matches.</p>
+
+    <div id="app-out" class="card">
+      <h3>🔑 Entra o crea tu cuenta</h3>
+      <div class="bat-row">
+        <input type="email" id="auth-email" placeholder="tu@correo.com" autocomplete="email">
+        <input type="password" id="auth-pass" placeholder="Contraseña" autocomplete="current-password">
+      </div>
+      <div class="bat-row">
+        <button class="btn" id="auth-login" type="button">Entrar</button>
+        <button class="btn ghost" id="auth-signup" type="button">Crear cuenta</button>
+      </div>
+      <p class="muted" id="auth-msg" role="status"></p>
+    </div>
+
+    <div id="app-in" hidden>
+      <div class="card">
+        <h3>👤 Mi perfil público</h3>
+        <div class="bat-row">
+          <input type="text" id="pf-alias" maxlength="40" placeholder="Alias público (ej. Luna_22)">
+          <input type="text" id="pf-city" maxlength="60" placeholder="Ciudad">
+          <select id="pf-mode">
+            <option value="">— Elige tu modo —</option>
+            <option value="seria">💍 Relación seria</option>
+            <option value="corto">🌙 Algo corto</option>
+            <option value="sexo">🔥 Solo sexo (+18 verificado)</option>
+            <option value="evento">🎟️ Solo por un evento</option>
+            <option value="actividades">🎲 Actividades / amistad</option>
+          </select>
+        </div>
+        <label class="muted"><input type="checkbox" id="pf-adult"> Confirmo que soy mayor de 18 años</label>
+        <div class="bat-row">
+          <button class="btn" id="pf-save" type="button">Guardar mi perfil</button>
+          <button class="btn ghost" id="auth-logout" type="button">Cerrar sesión</button>
+        </div>
+        <p class="muted" id="pf-msg" role="status"></p>
+      </div>
+
+      <div class="card">
+        <h3>📡 Mi vector y mi llave de consulta</h3>
+        <p class="muted">Publica los puntajes de tu batería (Big Five, EQ y cognitivo) para poder emparejar. Después genera tu llave de consulta: con ella, tu IA puede pedir tu Top 10 a nuestra URL de consulta.</p>
+        <div class="bat-row">
+          <button class="btn" id="vec-publish" type="button">Publicar mi vector</button>
+          <button class="btn ghost" id="key-gen" type="button">Generar / regenerar mi llave</button>
+        </div>
+        <p class="muted" id="vec-msg" role="status"></p>
+        <div class="keybox" id="key-box" hidden>
+          <div>🔑 <strong id="key-id"></strong></div>
+          <div class="secret" id="key-secret"></div>
+          <p class="warn">Guarda esta llave: se muestra una sola vez. Es de SOLO LECTURA (solo sirve para consultar tu Top 10) y puedes regenerarla cuando quieras; al regenerarla, la anterior deja de servir.</p>
+          <p class="muted">Tu URL de consulta (dásela a tu IA junto con el prompt de «Conecta tu IA»):</p>
+          <div class="secret" id="key-url"></div>
+          <div class="bat-row"><button class="btn ghost" id="key-copy" type="button">Copiar URL de consulta</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🏆 Mi Top 10</h3>
+        <p class="muted">Se calcula contra todos los perfiles registrados con modo compatible. Si descartas a alguien, el matcher conserva a los demás y completa con perfiles nuevos.</p>
+        <div class="bat-row"><button class="btn big" id="top-run" type="button">✨ Calcular / actualizar mi Top 10</button></div>
+        <p class="muted" id="top-msg" role="status"></p>
+        <div class="cards" id="top-list"></div>
+      </div>
+
+      <div class="card">
+        <h3>💬 Mis chats</h3>
+        <p class="muted" id="chat-msg" role="status"></p>
+        <div id="conv-list"></div>
+        <div id="chat-box" hidden>
+          <h4 id="chat-title"></h4>
+          <div class="chatlog" id="chat-log"></div>
+          <div class="bat-row">
+            <input type="text" id="chat-input" maxlength="2000" placeholder="Escribe un mensaje…">
+            <button class="btn" id="chat-send" type="button">Enviar</button>
+            <button class="btn ghost" id="chat-close" type="button">Cerrar</button>
+          </div>
+          <p class="muted">🔒 Chat interno: no compartas tu teléfono ni datos personales hasta que te sientas segura/o. Puedes reportar o bloquear a la otra persona en cualquier momento.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== LISTA DE ESPERA ===== -->
   <section class="seccion" id="espera">
     <h2 class="sec-title" data-i18n="wait.title">Lista de espera</h2>
@@ -272,5 +357,7 @@
 <script src="tests-data.js"></script>
 <script src="bateria.js"></script>
 <script src="vault.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="app.js"></script>
 </body>
 </html>
